@@ -11,7 +11,7 @@ extents = Vector2( 8, 8 )
 texture = ExtResource( 1 )
 hframes = 28
 vframes = 22
-frame = 1
+frame = 13
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TileSprites"]
 
@@ -24,7 +24,7 @@ position = Vector2( 48, 0 )
 texture = ExtResource( 1 )
 hframes = 28
 vframes = 22
-frame = 29
+frame = 41
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TileSprites2"]
 
