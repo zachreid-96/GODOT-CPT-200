@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Players/Player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 512, 24 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 512, -24, 512, 24, -512, 24, -512, -24 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -88 )
+MAX_SPEED = 300
+FRICTION = 2000
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -272 )
+current = true

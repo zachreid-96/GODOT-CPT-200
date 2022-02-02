@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/tiles/bricks.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/Players/Player2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/tiles/outdoors.png" type="Texture" id=3]
+[ext_resource path="res://assets/audio/cave_theme_2.wav" type="AudioStream" id=4]
+
+[sub_resource type="TileSet" id=1]
+0/name = "outdoors.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 176, 0, 16, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "outdoors.png 1"
+1/texture = ExtResource( 3 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 192, 0, 16, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( -32, 0 )
+b = Vector2( -64, 0 )
+
+[node name="testWorld" type="Node2D"]
+
+[node name="Player2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -57, -3 )
+
+[node name="Camera2D" type="Camera2D" parent="Player2"]
+current = true
+zoom = Vector2( 0.2, 0.2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -720893, 0, 0, -655356, 0, 0, -524282, 0, 0, -393208, 0, 0, -393202, 0, 0, -262149, 0, 0, -327671, 0, 0, -327666, 0, 0, -196613, 0, 0, -262130, 0, 0, -131077, 0, 0, -196597, 0, 0, -196594, 0, 0, -65541, 0, 0, -131058, 0, 0, -5, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65527, 0, 0, -65522, 0, 0, 65531, 0, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 10, 0, 0, 14, 0, 0, 131067, 1, 0, 131068, 1, 0, 131069, 1, 0, 131070, 1, 0, 131071, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65549, 1, 0, 65550, 1, 0, 196603, 1, 0, 196604, 1, 0, 196605, 1, 0, 196606, 1, 0, 196607, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131084, 1, 0, 131085, 1, 0, 131086, 1, 0, 262139, 1, 0, 262140, 1, 0, 262141, 1, 0, 262142, 1, 0, 262143, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 327675, 1, 0, 327676, 1, 0, 327677, 1, 0, 327678, 1, 0, 327679, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 393211, 1, 0, 393212, 1, 0, 393213, 1, 0, 393214, 1, 0, 393215, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 327690, 1, 0, 327691, 1, 0, 327692, 1, 0, 327693, 1, 0, 327694, 1, 0 )
+
+[node name="TileMap2" type="TileMap" parent="."]
+position = Vector2( 0, 16 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 32 )
+cell_custom_transform = Transform2D( 64, 0, 0, 32, 0, 0 )
+cell_tile_origin = 2
+format = 1
+tile_data = PoolIntArray( -4, 0, 0, -3, 1, 0 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TileMap2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap2/StaticBody2D"]
+position = Vector2( 0, -1 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TileMap2/StaticBody2D"]
+position = Vector2( -1, -30 )
+shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
