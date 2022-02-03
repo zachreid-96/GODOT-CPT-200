@@ -6,6 +6,7 @@ const MAXFALLSPEED = 200
 const MAXSPEED = 80
 const JUMPFORCE = 320
 const ACCEL = 10
+const FRICTION = 0.2
 
 var motion = Vector2()
 var facing_right = true
@@ -37,8 +38,11 @@ func _physics_process(delta):
 		$AnimationPlayer.play("Run")
 		
 	else:
-		motion.x = lerp(motion.x,0,0.2)
-		$AnimationPlayer.play("idle")
+		motion.x = lerp(motion.x,0,FRICTION)
+		if is_on_floor():
+			$AnimationPlayer.play("idle")
+		else:
+			$AnimationPlayer.stop(true)
 	
 	motion = move_and_slide(motion,UP)
 	
