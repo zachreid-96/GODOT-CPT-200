@@ -42,7 +42,7 @@ b = Vector2( -64, 0 )
 [node name="testWorld" type="Node2D"]
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
-position = Vector2( -57, -3 )
+position = Vector2( -48, 8 )
 
 [node name="Camera2D" type="Camera2D" parent="Player2"]
 current = true
