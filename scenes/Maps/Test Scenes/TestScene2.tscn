@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/tiles/bricks.tres" type="TileSet" id=1]
-[ext_resource path="res://scenes/Players/Player2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Players/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tiles/outdoors.png" type="Texture" id=3]
 [ext_resource path="res://assets/audio/cave_theme_2.wav" type="AudioStream" id=4]
 
