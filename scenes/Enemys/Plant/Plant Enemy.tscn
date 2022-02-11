@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/e5a492893929813d645ee5f94dae9e8d.jpg" type="Texture" id=1]
+[ext_resource path="res://scripts/Plant Enemy.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 13.5 )
+
+[node name="Plant Enemy" type="KinematicBody2D" groups=["Enemy"]]
+script = ExtResource( 2 )
+projectileForceX = -200
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -13.5 )
+shape = SubResource( 1 )
+
+[node name="ProjectileSpawn" type="Node2D" parent="."]
+position = Vector2( -8, -16 )
+
+[node name="DelayBetweenShots" type="Timer" parent="."]
+autostart = true
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( 0, -14 )
+scale = Vector2( 0.0117045, 0.0136719 )
+texture = ExtResource( 1 )
+flip_h = true
+
+[connection signal="timeout" from="DelayBetweenShots" to="." method="_on_DelayBetweenShots_timeout"]
