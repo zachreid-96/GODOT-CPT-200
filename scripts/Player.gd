@@ -40,8 +40,8 @@ func _physics_process(delta):
 		#Slow down on the floor
 		motion.x = lerp(motion.x,0,FRICTION)
 	#Jump is pressed
-		if Input.is_action_just_pressed("move_jump"):
-			motion.y = -JUMPFORCE
+	if Input.is_action_just_pressed("move_jump"):
+		motion.y = -JUMPFORCE
 	
 	#Re-evaluate motion using updated values
 	motion = move_and_slide(motion,UP)
