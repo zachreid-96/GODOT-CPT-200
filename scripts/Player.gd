@@ -1,52 +1,51 @@
 extends KinematicBody2D
 
+const UP = Vector2(0,-1)
+export var GRAVITY = 20
+export var MAXFALLSPEED = 200
+export var MAXSPEED = 80
+export var JUMPFORCE = 320
+export var ACCEL = 10
+export var FRICTION = 0.2
 
-# Declare member variables here. Examples:
-var velocity = Vector2.ZERO
-export var MAX_SPEED = 140
-export var ACCELERATION = 800
-export var FRICTION = 600
-export var GRAVITY = 400
-var is_gravity_on = false
+var motion = Vector2()
+var facing_right = true
+var state_machine
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	movement(delta)
-	jump()
 	
-
-func jump():
-	if Input.is_action_just_pressed("move_jump"):
-		velocity += (Vector2.UP * 1100)
-
-func movement(delta):
-	var input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	input_vector = input_vector.normalized()
-	
-	#This makes it where friction is low in the air (keep this if you want more fluid like air)
-	var friction = FRICTION
-	if !is_on_floor():
-		friction = 50
-	
-	#player moving
-	if input_vector != Vector2.ZERO:
-		#make velocity move towards player input (print the input_vector for values) and times it by max speed
-		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
-
-	#player NOT moving :o
+func _physics_process(delta):
+	#Establish gravity
+	motion.y += GRAVITY
+	if motion.y > MAXFALLSPEED:
+		motion.y = MAXFALLSPEED
+	#Set limits for x-motion
+	motion.x = clamp(motion.x, -MAXSPEED, MAXSPEED)
+	#Set correct collision if ducking
+	if Input.is_action_pressed("move_down"):
+		$CollisionStand.disabled = true
 	else:
-		#Player aint moving start making the speed the player is at to 0
-		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
-		
-	#Gravity variable, make this single digit go up or down for more stronger/weaker gravity
-	velocity.y += GRAVITY*delta*5
-	velocity = move_and_slide(velocity,Vector2.UP)
-
-func _on_GravityEnableDelay_timeout():
-	is_gravity_on = true
+		$CollisionStand.disabled = false
+	
+	#Calculate motion and sprite direction based on left/right keys
+	if Input.is_action_pressed("move_right"):
+		motion.x += ACCEL
+		$Sprite.flip_h = false
+	elif Input.is_action_pressed("move_left"):
+		motion.x += -ACCEL
+		$Sprite.flip_h = true
+	#If neither is pressed and on the floor
+	elif is_on_floor():
+		#Slow down on the floor
+		motion.x = lerp(motion.x,0,FRICTION)
+	
+	#Jump is pressed
+	if Input.is_action_just_pressed("move_jump"):
+		motion.y = -JUMPFORCE
+	
+	#Re-evaluate motion using updated values
+	motion = move_and_slide(motion,UP)
+	
+	#if Input.is_action_pressed("attack"):
+		#pass

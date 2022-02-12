@@ -1,8 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/sprites/test_sprite.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/player_sprite.png" type="Texture" id=1]
 [ext_resource path="res://interface/counter_assets/Counter_BG_100T.png" type="Texture" id=2]
 [ext_resource path="res://themes/fonts/Default_Font.tres" type="DynamicFont" id=3]
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
