@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/tiles/bricks.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Players/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tiles/outdoors.png" type="Texture" id=3]
 [ext_resource path="res://assets/audio/cave_theme_2.wav" type="AudioStream" id=4]
+[ext_resource path="res://interface/Interface.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "outdoors.png 0"
@@ -35,18 +36,17 @@
 1/shapes = [  ]
 1/z_index = 0
 
-[sub_resource type="SegmentShape2D" id=2]
-a = Vector2( -32, 0 )
-b = Vector2( -64, 0 )
+[sub_resource type="SegmentShape2D" id=5]
+a = Vector2( 0, 9 )
+b = Vector2( 0, 28 )
+
+[sub_resource type="SegmentShape2D" id=4]
+a = Vector2( 9.53674e-07, 2 )
+b = Vector2( 1.90735e-06, 32 )
+
+[sub_resource type="SegmentShape2D" id=6]
 
 [node name="testWorld" type="Node2D"]
-
-[node name="Player2" parent="." instance=ExtResource( 2 )]
-position = Vector2( -48, 8 )
-
-[node name="Camera2D" type="Camera2D" parent="Player2"]
-current = true
-zoom = Vector2( 0.2, 0.2 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -63,15 +63,35 @@ cell_tile_origin = 2
 format = 1
 tile_data = PoolIntArray( -4, 0, 0, -3, 1, 0 )
 
+[node name="Level 1" type="StaticBody2D" parent="TileMap2" groups=["PipeEntrance"]]
+position = Vector2( -34, -31 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap2/Level 1"]
+position = Vector2( 0, 3 )
+shape = SubResource( 5 )
+
 [node name="StaticBody2D" type="StaticBody2D" parent="TileMap2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap2/StaticBody2D"]
-position = Vector2( 0, -1 )
-shape = SubResource( 2 )
+[node name="PipeTop" type="CollisionShape2D" parent="TileMap2/StaticBody2D"]
+position = Vector2( -32, -29 )
+rotation = 1.5708
+shape = SubResource( 4 )
+one_way_collision_margin = 0.0
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="TileMap2/StaticBody2D"]
-position = Vector2( -1, -30 )
-shape = SubResource( 2 )
+[node name="PipeEnterTop" type="CollisionShape2D" parent="TileMap2/StaticBody2D"]
+position = Vector2( -34, -29 )
+shape = SubResource( 6 )
+
+[node name="Player2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -24, 16 )
+
+[node name="IU_Overlay" parent="Player2" instance=ExtResource( 5 )]
+margin_right = 100.0
+margin_bottom = 58.0
+
+[node name="Camera2D" type="Camera2D" parent="Player2"]
+current = true
+zoom = Vector2( 0.2, 0.2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
