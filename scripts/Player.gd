@@ -39,6 +39,7 @@ func _physics_process(delta):
 	elif is_on_floor():
 		#Slow down on the floor
 		motion.x = lerp(motion.x,0,FRICTION)
+	
 	#Jump is pressed
 	if Input.is_action_just_pressed("move_jump"):
 		motion.y = -JUMPFORCE
