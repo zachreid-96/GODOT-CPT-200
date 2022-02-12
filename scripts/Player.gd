@@ -10,49 +10,41 @@ export var FRICTION = 0.2
 
 var motion = Vector2()
 var facing_right = true
+var state_machine
 
 func _ready():
 	pass # Replace with function body.
 	
 func _physics_process(delta):
-	
+	#Establish gravity
 	motion.y += GRAVITY
 	if motion.y > MAXFALLSPEED:
 		motion.y = MAXFALLSPEED
-	
+	#Set limits for x-motion
 	motion.x = clamp(motion.x, -MAXSPEED, MAXSPEED)
+	#Set correct collision if ducking
+	if Input.is_action_pressed("move_down"):
+		$CollisionStand.disabled = true
+	else:
+		$CollisionStand.disabled = false
 	
+	#Calculate motion and sprite direction based on left/right keys
 	if Input.is_action_pressed("move_right"):
 		motion.x += ACCEL
-		$AnimatedSprite.flip_h = false
-		$AnimatedSprite.play("Run")
-		
+		$Sprite.flip_h = false
 	elif Input.is_action_pressed("move_left"):
 		motion.x += -ACCEL
-		$AnimatedSprite.flip_h = true
-		$AnimatedSprite.play("Run")
-		
-	else:
+		$Sprite.flip_h = true
+	#If neither is pressed and on the floor
+	elif is_on_floor():
+		#Slow down on the floor
 		motion.x = lerp(motion.x,0,FRICTION)
-		if is_on_floor():
-			$AnimatedSprite.play("Default")
-		else:
-			pass
-			#$AnimatedSprite.play("Default")
-	
-	motion = move_and_slide(motion,UP)
-	
-	if Input.is_action_pressed("attack"):
-		$AnimatedSprite.play("Attack2")
-	
-	if is_on_floor():
+	#Jump is pressed
 		if Input.is_action_just_pressed("move_jump"):
 			motion.y = -JUMPFORCE
-			$AnimatedSprite.play("Jump")
-	else:
-		if motion.y > 0:
-			$AnimatedSprite.play("Fall")
-			
-
-func animate(var animName, var xMotion):
-	pass
+	
+	#Re-evaluate motion using updated values
+	motion = move_and_slide(motion,UP)
+	
+	#if Input.is_action_pressed("attack"):
+		#pass
