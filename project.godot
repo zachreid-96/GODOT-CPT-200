@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Godot- Cpt- 200"
-run/main_scene="res://scenes/Maps/Level 1.tscn"
+run/main_scene="res://scenes/Maps/Designed Maps/Level_1-NT.tscn"
 config/icon="res://icon.png"
 
 [input]

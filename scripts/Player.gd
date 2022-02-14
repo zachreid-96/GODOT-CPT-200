@@ -4,7 +4,8 @@ const UP = Vector2(0,-1)
 export var GRAVITY = 20
 export var MAXFALLSPEED = 200
 export var MAXSPEED = 80
-export var JUMPFORCE = 320
+export var JUMPFORCE = 350
+
 export var ACCEL = 10
 export var FRICTION = 0.2
 
@@ -25,8 +26,10 @@ func _physics_process(delta):
 	#Set correct collision if ducking
 	if Input.is_action_pressed("move_down"):
 		$CollisionStand.disabled = true
+		MAXSPEED = 40
 	else:
 		$CollisionStand.disabled = false
+		MAXSPEED = 80
 	
 	#Calculate motion and sprite direction based on left/right keys
 	if Input.is_action_pressed("move_right"):
@@ -42,7 +45,8 @@ func _physics_process(delta):
 	
 	#Jump is pressed
 	if Input.is_action_just_pressed("move_jump"):
-		motion.y = -JUMPFORCE
+		if is_on_floor():
+			motion.y = -JUMPFORCE
 	
 	#Re-evaluate motion using updated values
 	motion = move_and_slide(motion,UP)
