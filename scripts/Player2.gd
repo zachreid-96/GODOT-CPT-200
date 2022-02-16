@@ -50,3 +50,12 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("move_jump"):
 			motion.y = -JUMPFORCE
 			$AnimationPlayer.play("Jump")
+			
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		if collision.collider.is_in_group("PipeEntrance"):
+			enterPipe(collision.collider.name)
+
+func enterPipe(name):
+	var path = "res://scenes/Maps/" + name + ".tscn"
+	get_tree().change_scene(path)
