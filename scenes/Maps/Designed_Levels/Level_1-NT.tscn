@@ -2,8 +2,9 @@
 
 [ext_resource path="res://assets/tiles/autotile_directions.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/cave_theme_2.wav" type="AudioStream" id=2]
-[ext_resource path="res://scenes/Players/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Players/Test Players/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=4]
+
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
