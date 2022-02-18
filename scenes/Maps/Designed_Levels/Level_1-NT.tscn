@@ -458,7 +458,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 [node name="Player2" parent="." instance=ExtResource( 3 )]
 
 [node name="Camera2D" type="Camera2D" parent="Player2"]
-position = Vector2( -50, -14 )
+position = Vector2( 1, -14 )
 current = true
 zoom = Vector2( 0.3, 0.3 )
 

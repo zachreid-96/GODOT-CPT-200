@@ -11,16 +11,9 @@ config_version=4
 [application]
 
 config/name="Godot- Cpt- 200"
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-run/main_scene="res://scenes/Maps/Designed Maps/Level_1-NT.tscn"
-=======
 run/main_scene="res://scenes/Maps/Designed_Levels/Level_1-NT.tscn"
->>>>>>> Stashed changes
-=======
-run/main_scene="res://scenes/Maps/Level 1.tscn"
->>>>>>> parent of e441439 (Added New Level)
 config/icon="res://icon.png"
+<<<<<<<HEAD<<<<<<<Updatedupstreamrun/main_scene="res://scenes/Maps/Designed Maps/Level_1-NT.tscn"
 
 [input]
 
