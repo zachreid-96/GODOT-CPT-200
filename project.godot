@@ -24,6 +24,11 @@ config/name="Godot- Cpt- 200"
 run/main_scene="res://scenes/Maps/Level 1.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [input]
 
 move_up={
