@@ -9,6 +9,7 @@ bounce = 1.0
 radius = 4.0
 
 [node name="Plant Projectile" type="RigidBody2D"]
+mass = 2.04082
 physics_material_override = SubResource( 2 )
 continuous_cd = 1
 script = ExtResource( 1 )
