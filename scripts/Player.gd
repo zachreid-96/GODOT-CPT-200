@@ -101,3 +101,7 @@ func move_x():
 func _on_SwordHit_area_entered(area):
 		if area.is_in_group("hurtbox"):
 			area.take_damage()
+
+func respawn():
+	position.x = 8
+	position.y = -2
