@@ -1,4 +1,6 @@
 extends KinematicBody2D
+class_name Player
+func get_class(): return "Player"
 
 const UP = Vector2(0,-1)
 export var GRAVITY = 20
@@ -7,6 +9,8 @@ export var MAXSPEED = 80
 export var JUMPFORCE = 280
 export var ACCEL = 10
 export var FRICTION = 0.2
+
+export var Health = 100
 
 var motion = Vector2()
 var facing_right = true
@@ -68,9 +72,10 @@ func _physics_process(_delta):
 	#Re-evaluate motion using updated values
 	motion = move_and_slide(motion,UP)
 	
-func hurt():
+func hurt(var d:int = 0):
 	state_machine.travel("Hurt")
-
+	Health -= d
+	
 func die():
 	state_machine.travel("Die")
 	set_physics_process(false)
