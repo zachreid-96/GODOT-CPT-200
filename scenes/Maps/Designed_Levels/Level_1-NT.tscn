@@ -1,9 +1,9 @@
 [gd_scene load_steps=55 format=2]
 
-[ext_resource path="res://assets/tiles/Pipe Assets.png" type="Texture" id=1]
-[ext_resource path="res://assets/tiles/autotile_directions.png" type="Texture" id=2]
-[ext_resource path="res://assets/audio/cave_theme_2.wav" type="AudioStream" id=3]
-[ext_resource path="res://scenes/Players/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/tiles/autotile_directions.png" type="Texture" id=1]
+[ext_resource path="res://assets/audio/cave_theme_2.wav" type="AudioStream" id=2]
+[ext_resource path="res://scenes/Players/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/tiles/Pipe Assets.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Enemys/Plant/Plant Enemy.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -149,7 +149,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="TileSet" id=49]
 0/name = "autotile_directions.png 0"
-0/texture = ExtResource( 2 )
+0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 176, 96 )
@@ -455,7 +455,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 } ]
 0/z_index = 0
 1/name = "Pipe Assets.png 1"
-1/texture = ExtResource( 1 )
+1/texture = ExtResource( 4 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 0, 64, 64 )
@@ -482,7 +482,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player2" parent="." instance=ExtResource( 4 )]
+[node name="Player2" parent="." instance=ExtResource( 3 )]
 
 [node name="Camera2D" type="Camera2D" parent="Player2"]
 position = Vector2( 1, -14 )
@@ -500,8 +500,9 @@ tile_set = SubResource( 50 )
 format = 1
 
 [node name="Plant Enemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 355, -160 )
+position = Vector2( 455, -172 )
+rotation = 3.14159
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource( 2 )
 volume_db = -80.0
