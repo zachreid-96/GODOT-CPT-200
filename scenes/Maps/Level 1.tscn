@@ -1,8 +1,10 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://assets/tiles/autotile_directions.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/cave_theme_2.wav" type="AudioStream" id=2]
 [ext_resource path="res://scenes/Players/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Enemys/Slime/Slime.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Enemys/Spikes/Spikes.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -456,7 +458,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 9, -2 )
+position = Vector2( 8, -2 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 0, -10 )
@@ -472,3 +474,9 @@ tile_data = PoolIntArray( -589819, 0, 3, -524287, 0, 196608, -524286, 0, 196610,
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 autoplay = true
+
+[node name="Slime" parent="." instance=ExtResource( 4 )]
+position = Vector2( 151, -14 )
+
+[node name="Spikes" parent="." instance=ExtResource( 5 )]
+position = Vector2( 53, 0 )
