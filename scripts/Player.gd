@@ -6,12 +6,12 @@ const UP = Vector2(0,-1)
 export var GRAVITY = 20
 export var MAXFALLSPEED = 200
 export var MAXSPEED = 80
-export var JUMPFORCE = 280
+export var JUMPFORCE = 350
 export var ACCEL = 10
-export var FRICTION = 0.2
+export var FRICTION = 1
 
+var speed = MAXSPEED
 export var Health = 100
-
 var motion = Vector2()
 var facing_right = true
 var state_machine
@@ -24,7 +24,7 @@ func get_input():
 	#var current = state_machine.get_current_node()
 	
 	#Set limits for x-motion
-	motion.x = clamp(motion.x, -MAXSPEED, MAXSPEED)
+	motion.x = clamp(motion.x, -speed, speed)
 	
 	#Set correct collision if ducking
 	if Input.is_action_pressed("move_down"):
@@ -94,10 +94,13 @@ func move_x():
 	if is_on_floor():
 		if Input.is_action_pressed("move_down"):
 			state_machine.travel("Duck")
+			speed = MAXSPEED / 2
 		elif Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right"):
 			state_machine.travel("Run")
+			speed = MAXSPEED
 		else:
 			state_machine.travel("Default")
+			speed = MAXSPEED
 	
 func _on_SwordHit_area_entered(area):
 		if area.is_in_group("hurtbox"):
