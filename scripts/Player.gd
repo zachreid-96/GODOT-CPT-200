@@ -13,13 +13,14 @@ export var FRICTION = 1
 var speed = MAXSPEED
 export var Health = 100
 var motion = Vector2()
-var facing_right = true
+var facing_left = false
 var state_machine
 var attacks = ["Attack1","Attack2","Attack3"]
 
+
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
-
+	
 func get_input():
 	#var current = state_machine.get_current_node()
 	
@@ -39,12 +40,18 @@ func get_input():
 	
 	#Calculate motion and sprite direction based on left/right keys
 	elif Input.is_action_pressed("move_right"):
-		motion.x += ACCEL
 		$Sprite.flip_h = false
+		$CollisionStand.position.x = -2
+		$CollisionDuck.position.x = -2
+		$Sprite/SwordHit.scale.x = 1
+		motion.x += ACCEL
 		move_x()
 	elif Input.is_action_pressed("move_left"):
-		motion.x -= ACCEL
 		$Sprite.flip_h = true
+		$CollisionStand.position.x = 2
+		$CollisionDuck.position.x = 2
+		$Sprite/SwordHit.scale.x = -1
+		motion.x -= ACCEL
 		move_x()
 	#If neither is pressed and on the floor
 	elif is_on_floor():
