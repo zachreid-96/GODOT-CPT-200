@@ -324,7 +324,7 @@ states/Duck/position = Vector2( 321, -86 )
 states/Fall/node = SubResource( 109 )
 states/Fall/position = Vector2( -342, 52 )
 states/Hurt/node = SubResource( 123 )
-states/Hurt/position = Vector2( 375, -2 )
+states/Hurt/position = Vector2( 375, -1 )
 states/Jump/node = SubResource( 102 )
 states/Jump/position = Vector2( -336, -52 )
 states/Run/node = SubResource( 103 )
@@ -332,7 +332,7 @@ states/Run/position = Vector2( -53, -139 )
 transitions = [ "Default", "Attack1", SubResource( 104 ), "Attack3", "Default", SubResource( 107 ), "Default", "Run", SubResource( 110 ), "Run", "Default", SubResource( 111 ), "Default", "Jump", SubResource( 112 ), "Default", "Duck", SubResource( 113 ), "Jump", "Fall", SubResource( 114 ), "Fall", "Default", SubResource( 115 ), "Duck", "Default", SubResource( 116 ), "Run", "Attack1", SubResource( 117 ), "Run", "Jump", SubResource( 120 ), "Default", "Hurt", SubResource( 124 ), "Hurt", "Default", SubResource( 125 ), "Default", "Die", SubResource( 126 ), "Attack1", "Default", SubResource( 127 ), "Attack2", "Default", SubResource( 128 ), "Fall", "Run", SubResource( 129 ), "Default", "Attack2", SubResource( 130 ), "Default", "Attack3", SubResource( 131 ) ]
 start_node = "Default"
 end_node = "Die"
-graph_offset = Vector2( -436, -16 )
+graph_offset = Vector2( -452, -155 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=96]
 

@@ -11,12 +11,14 @@ export var ACCEL = 10
 export var FRICTION = 1
 
 var speed = MAXSPEED
-export var Health = 100
 var motion = Vector2()
+
 var facing_left = false
 var state_machine
 var attacks = ["Attack1","Attack2","Attack3"]
 
+var health = 100.0
+var lives = 5
 
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
@@ -61,6 +63,8 @@ func get_input():
 
 func _physics_process(_delta):
 	get_input()
+	if health <= 0:
+		die()
 	#Establish gravity
 	motion.y += GRAVITY
 	if motion.y > MAXFALLSPEED:
@@ -79,13 +83,19 @@ func _physics_process(_delta):
 	#Re-evaluate motion using updated values
 	motion = move_and_slide(motion,UP)
 	
-func hurt(var d:int = 0):
+func hurt(var d:float = 0):
 	state_machine.travel("Hurt")
-	Health -= d
+	health -= d
+	print("health: ", health)
 	
 func die():
 	state_machine.travel("Die")
-	set_physics_process(false)
+	lives -= 1
+	print("lives: ", lives)
+	if lives > 0:
+		respawn()
+	else:
+		set_physics_process(false)
 
 func fall():
 	state_machine.travel("Fall")
@@ -114,5 +124,6 @@ func _on_SwordHit_area_entered(area):
 			area.take_damage()
 
 func respawn():
+	health = 100
 	position.x = 8
 	position.y = -2
