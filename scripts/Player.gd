@@ -86,12 +86,12 @@ func _physics_process(_delta):
 func hurt(var d:float = 0):
 	state_machine.travel("Hurt")
 	health -= d
-	print("health: ", health)
+	#print("health: ", health)
 	
 func die():
 	state_machine.travel("Die")
 	lives -= 1
-	print("lives: ", lives)
+	#print("lives: ", lives)
 	if lives > 0:
 		respawn()
 	else:
