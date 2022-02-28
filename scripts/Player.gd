@@ -86,7 +86,7 @@ func _physics_process(_delta):
 func hurt(var d:float = 0):
 	state_machine.travel("Hurt")
 	health -= d
-	#print("health: ", health)
+#	print("health: ", health)
 	
 func die():
 	state_machine.travel("Die")
@@ -119,11 +119,18 @@ func move_x():
 			state_machine.travel("Default")
 			speed = MAXSPEED
 	
-func _on_SwordHit_area_entered(area):
-		if area.is_in_group("hurtbox"):
-			area.take_damage()
-
 func respawn():
 	health = 100
 	position.x = 8
 	position.y = -2
+
+#Could possibly remove this (might not be needed in the future)
+func _on_SwordHit_area_entered(area):
+	if area.is_in_group("hurtbox"):
+		area.take_damage()
+
+func _on_SwordHit_body_entered(body):
+	#TODO: Change the 10 to a variable for player causing damage
+#	print(body)
+	if body.is_in_group("enemy"):
+		body.hurt(10)

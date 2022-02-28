@@ -482,7 +482,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player2" parent="." instance=ExtResource( 4 )]
+[node name="Player2" parent="." groups=["player"] instance=ExtResource( 4 )]
 
 [node name="Camera2D" type="Camera2D" parent="Player2"]
 position = Vector2( 1, -14 )
@@ -499,8 +499,9 @@ tile_data = PoolIntArray( -2228157, 0, 0, -2228156, 0, 1, -2228155, 0, 1, -22281
 tile_set = SubResource( 50 )
 format = 1
 
-[node name="Plant Enemy" parent="." instance=ExtResource( 5 )]
+[node name="Plant Enemy" parent="." groups=["enemy"] instance=ExtResource( 5 )]
 position = Vector2( 355, -160 )
+isFliped = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
