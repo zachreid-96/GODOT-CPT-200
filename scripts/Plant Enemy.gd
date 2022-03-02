@@ -7,10 +7,31 @@ onready var projectileSpawn:Node2D = $ProjectileSpawn
 export var projectileToSpawn:String = "res://scenes/Projectiles/Plant Projectile/Plant Projectile.tscn"
 #How much force the rigidbody projectile will apply on instance
 export var projectileForceX:int = -50
+export var delayBetweenShots = 5
+export var desiredDamage = 10
+export var isFliped = false
+export var health = 20
 
+#Do note the plant enemy does damage by colliding projectiles and not itself, refer to plant projectile or
+#its projectile its spawning
 
-#func _ready():
-#	flip()
+func _ready():
+	if isFliped:
+		flip()
+	var timer = $DelayBetweenShots
+	timer.wait_time = delayBetweenShots
+	
+func hurt(var d:float = 0):
+#	state_machine.travel("Hurt")
+	health -= d
+#	print("health: ", health)
+	if health <= 0:
+		die()
+	
+func die():
+#	state_machine.travel("Die")
+	#print("lives: ", lives)
+	queue_free()
 
 #Flip the sprite around and direction of shooting if needed
 func flip():
@@ -23,6 +44,7 @@ func shoot():
 	var loadedProjectile = load(projectileToSpawn)
 	var projectile:RigidBody2D = loadedProjectile.instance()
 	get_parent().add_child(projectile)
+	projectile.damage = desiredDamage
 	projectile.global_position = projectileSpawn.global_position
 	projectile.linear_velocity.x = projectileForceX
 

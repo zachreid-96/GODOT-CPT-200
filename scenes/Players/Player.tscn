@@ -353,7 +353,7 @@ texture = ExtResource( 1 )
 hframes = 13
 vframes = 8
 
-[node name="SwordHit" type="Area2D" parent="Sprite"]
+[node name="SwordHit" type="Area2D" parent="Sprite" groups=["player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/SwordHit"]
 position = Vector2( 8, 6 )
@@ -379,3 +379,4 @@ active = true
 parameters/playback = SubResource( 96 )
 
 [connection signal="area_entered" from="Sprite/SwordHit" to="." method="_on_SwordHit_area_entered"]
+[connection signal="body_entered" from="Sprite/SwordHit" to="." method="_on_SwordHit_body_entered"]
