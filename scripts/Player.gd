@@ -11,15 +11,18 @@ export var ACCEL = 10
 export var FRICTION = 1
 
 var speed = MAXSPEED
-export var Health = 100
 var motion = Vector2()
-var facing_right = true
+
+var facing_left = false
 var state_machine
 var attacks = ["Attack1","Attack2","Attack3"]
 
+var health = 100.0
+var lives = 5
+
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
-
+	
 func get_input():
 	#var current = state_machine.get_current_node()
 	
@@ -39,12 +42,18 @@ func get_input():
 	
 	#Calculate motion and sprite direction based on left/right keys
 	elif Input.is_action_pressed("move_right"):
-		motion.x += ACCEL
 		$Sprite.flip_h = false
+		$CollisionStand.position.x = -2
+		$CollisionDuck.position.x = -2
+		$Sprite/SwordHit.scale.x = 1
+		motion.x += ACCEL
 		move_x()
 	elif Input.is_action_pressed("move_left"):
-		motion.x -= ACCEL
 		$Sprite.flip_h = true
+		$CollisionStand.position.x = 2
+		$CollisionDuck.position.x = 2
+		$Sprite/SwordHit.scale.x = -1
+		motion.x -= ACCEL
 		move_x()
 	#If neither is pressed and on the floor
 	elif is_on_floor():
@@ -54,6 +63,8 @@ func get_input():
 
 func _physics_process(_delta):
 	get_input()
+	if health <= 0:
+		die()
 	#Establish gravity
 	motion.y += GRAVITY
 	if motion.y > MAXFALLSPEED:
@@ -72,13 +83,19 @@ func _physics_process(_delta):
 	#Re-evaluate motion using updated values
 	motion = move_and_slide(motion,UP)
 	
-func hurt(var d:int = 0):
+func hurt(var d:float = 0):
 	state_machine.travel("Hurt")
-	Health -= d
+	health -= d
+#	print("health: ", health)
 	
 func die():
 	state_machine.travel("Die")
-	set_physics_process(false)
+	lives -= 1
+	#print("lives: ", lives)
+	if lives > 0:
+		respawn()
+	else:
+		set_physics_process(false)
 
 func fall():
 	state_machine.travel("Fall")
@@ -102,10 +119,18 @@ func move_x():
 			state_machine.travel("Default")
 			speed = MAXSPEED
 	
-func _on_SwordHit_area_entered(area):
-		if area.is_in_group("hurtbox"):
-			area.take_damage()
-
 func respawn():
+	health = 100
 	position.x = 8
 	position.y = -2
+
+#Could possibly remove this (might not be needed in the future)
+func _on_SwordHit_area_entered(area):
+	if area.is_in_group("hurtbox"):
+		area.take_damage()
+
+func _on_SwordHit_body_entered(body):
+	#TODO: Change the 10 to a variable for player causing damage
+#	print(body)
+	if body.is_in_group("enemy"):
+		body.hurt(10)

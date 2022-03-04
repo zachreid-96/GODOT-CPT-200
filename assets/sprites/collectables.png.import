@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spikes.png-4c0621c652bf402b54b0db827b5b8f44.stex"
+path="res://.import/collectables.png-b6c1e1c1904b41ad1bc742804be449b4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/spikes.png"
-dest_files=[ "res://.import/spikes.png-4c0621c652bf402b54b0db827b5b8f44.stex" ]
+source_file="res://assets/sprites/collectables.png"
+dest_files=[ "res://.import/collectables.png-b6c1e1c1904b41ad1bc742804be449b4.stex" ]
 
 [params]
 
