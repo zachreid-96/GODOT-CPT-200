@@ -834,6 +834,7 @@ points = PoolVector2Array( 16, 14, 0, 14, 0, 2, 16, 2 )
 [node name="Node2D" type="Node2D"]
 
 [node name="Player2" parent="." groups=["player"] instance=ExtResource( 4 )]
+position = Vector2( 1128, 64 )
 
 [node name="Camera2D" type="Camera2D" parent="Player2"]
 position = Vector2( 1, -14 )
@@ -918,6 +919,7 @@ position = Vector2( 1480, 64 )
 
 [node name="Plant Enemy4" parent="Obsticles/Plants" instance=ExtResource( 5 )]
 position = Vector2( 1672, 64 )
+delayBetweenShots = 10
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 49 )
