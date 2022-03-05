@@ -843,6 +843,125 @@ zoom = Vector2( 0.3, 0.3 )
 [node name="Spikes" parent="." instance=ExtResource( 7 )]
 position = Vector2( 120, 0 )
 
+[node name="Collectables" type="Node2D" parent="."]
+
+[node name="Collectable12" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1040, -152 )
+
+[node name="Collectable9" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 592, -272 )
+
+[node name="Collectable10" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 608, -272 )
+
+[node name="Collectable11" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 624, -272 )
+
+[node name="Collectable7" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 112, -296 )
+
+[node name="Collectable8" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 144, -296 )
+
+[node name="Collectable3" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 8, -272 )
+
+[node name="Collectable4" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 24, -272 )
+
+[node name="Collectable5" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 128, -296 )
+
+[node name="Collectable6" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( -8, -272 )
+
+[node name="Collectable" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( -32, -192 )
+
+[node name="Collectable2" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 56, -192 )
+
+[node name="Collectable13" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1040, -216 )
+
+[node name="Collectable14" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 992, -184 )
+
+[node name="Collectable15" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 992, -120 )
+
+[node name="Collectable16" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1040, -88 )
+
+[node name="Collectable17" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 992, -56 )
+
+[node name="Collectable18" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1040, -24 )
+
+[node name="Collectable19" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 992, 8 )
+
+[node name="Collectable20" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1448, -40 )
+
+[node name="Collectable21" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1480, -40 )
+
+[node name="Collectable22" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1512, -40 )
+
+[node name="Collectable23" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1544, -40 )
+
+[node name="Collectable24" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1576, -40 )
+
+[node name="Collectable25" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1608, -40 )
+
+[node name="Collectable27" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1496, -168 )
+
+[node name="Collectable28" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1480, -184 )
+
+[node name="Collectable29" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1464, -192 )
+
+[node name="Collectable30" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1448, -184 )
+
+[node name="Collectable31" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1432, -168 )
+
+[node name="Collectable32" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1320, -232 )
+
+[node name="Collectable33" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1320, -192 )
+
+[node name="Collectable34" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1320, -264 )
+
+[node name="Collectable35" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1320, -312 )
+
+[node name="Collectable36" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1320, -360 )
+
+[node name="Collectable37" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1632, -408 )
+
+[node name="Collectable38" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1648, -408 )
+
+[node name="Collectable39" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1640, -424 )
+
+[node name="Collectable26" parent="Collectables" instance=ExtResource( 6 )]
+position = Vector2( 1512, -120 )
+
 [node name="Obsticles" type="Node2D" parent="."]
 
 [node name="Spikes" type="Node2D" parent="Obsticles"]
@@ -935,9 +1054,3 @@ tile_data = PoolIntArray( -1572777, 0, 196608, -1572776, 0, 196609, -1572775, 0,
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -80.0
-
-[node name="Collectable" parent="." instance=ExtResource( 6 )]
-position = Vector2( 45, -37 )
-
-[node name="Collectable2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 86, -38 )
