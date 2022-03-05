@@ -1,42 +1,44 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://interface/nuts/Nuts_Counter.tscn" type="PackedScene" id=1]
-[ext_resource path="res://interface/bolts/Bolts_Counter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://interface/nuts/Nuts_Counter.gd" type="Script" id=2]
+[ext_resource path="res://interface/Interface.gd" type="Script" id=3]
 [ext_resource path="res://interface/health_bar/Health_Bar.tscn" type="PackedScene" id=4]
 
-[node name="Control" type="Control"]
+[node name="Interface" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -100.0
-margin_top = -58.0
-margin_right = -924.0
-margin_bottom = -533.0
-rect_min_size = Vector2( 200, 116 )
+margin_left = -155.0
+margin_top = -105.0
+margin_right = -869.0
+margin_bottom = -525.0
+rect_min_size = Vector2( 310, 180 )
 rect_pivot_offset = Vector2( 100, 58 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Health_Bar" parent="." instance=ExtResource( 4 )]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 65.0
-margin_bottom = 13.0
+margin_left = 8.0
+margin_top = 5.0
+margin_right = 94.0
+margin_bottom = 19.0
 
 [node name="Collectibles" type="HBoxContainer" parent="."]
-margin_left = 147.0
-margin_top = 1.0
-margin_right = 199.0
-margin_bottom = 13.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -45.0
+margin_top = 6.0
+margin_right = -5.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 40, 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Nuts_Counter" parent="Collectibles" instance=ExtResource( 1 )]
-margin_right = 24.0
-margin_bottom = 12.0
+script = ExtResource( 2 )
 
-[node name="Bolts_Counter" parent="Collectibles" instance=ExtResource( 3 )]
-margin_left = 28.0
-margin_right = 52.0
-margin_bottom = 12.0
+[connection signal="health_updated" from="." to="Health_Bar" method="_on_Interface_health_updated"]
+[connection signal="nuts_updated" from="." to="Collectibles/Nuts_Counter" method="_on_Interface_nuts_updated"]

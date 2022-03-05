@@ -20,6 +20,8 @@ var attacks = ["Attack1","Attack2","Attack3"]
 var health = 100.0
 var lives = 5
 
+signal health_changed(health)
+
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
 	
@@ -86,6 +88,7 @@ func _physics_process(_delta):
 func hurt(var d:float = 0):
 	state_machine.travel("Hurt")
 	health -= d
+	emit_signal("health_changed", health)
 #	print("health: ", health)
 	
 func die():
