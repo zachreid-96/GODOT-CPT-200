@@ -1,52 +1,136 @@
 extends KinematicBody2D
+class_name Player
+func get_class(): return "Player"
 
+const UP = Vector2(0,-1)
+export var GRAVITY = 20
+export var MAXFALLSPEED = 200
+export var MAXSPEED = 80
+export var JUMPFORCE = 350
+export var ACCEL = 10
+export var FRICTION = 1
 
-# Declare member variables here. Examples:
-var velocity = Vector2.ZERO
-export var MAX_SPEED = 140
-export var ACCELERATION = 800
-export var FRICTION = 600
-export var GRAVITY = 400
-var is_gravity_on = false
+var speed = MAXSPEED
+var motion = Vector2()
 
-# Called when the node enters the scene tree for the first time.
+var facing_left = false
+var state_machine
+var attacks = ["Attack1","Attack2","Attack3"]
+
+var health = 100.0
+var lives = 5
+
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	movement(delta)
-	jump()
+	state_machine = $AnimationTree.get("parameters/playback")
 	
-
-func jump():
-	if Input.is_action_just_pressed("move_jump"):
-		velocity += (Vector2.UP * 1100)
-
-func movement(delta):
-	var input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	input_vector = input_vector.normalized()
+func get_input():
+	#var current = state_machine.get_current_node()
 	
-	#This makes it where friction is low in the air (keep this if you want more fluid like air)
-	var friction = FRICTION
-	if !is_on_floor():
-		friction = 50
+	#Set limits for x-motion
+	motion.x = clamp(motion.x, -speed, speed)
 	
-	#player moving
-	if input_vector != Vector2.ZERO:
-		#make velocity move towards player input (print the input_vector for values) and times it by max speed
-		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
-
-	#player NOT moving :o
+	#Set correct collision if ducking
+	if Input.is_action_pressed("move_down"):
+		$CollisionStand.disabled = true
+		move_x()
 	else:
-		#Player aint moving start making the speed the player is at to 0
-		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+		$CollisionStand.disabled = false
 		
-	#Gravity variable, make this single digit go up or down for more stronger/weaker gravity
-	velocity.y += GRAVITY*delta*5
-	velocity = move_and_slide(velocity,Vector2.UP)
+	#Attack animation
+	if Input.is_action_pressed("attack"):
+		attack()
+	
+	#Calculate motion and sprite direction based on left/right keys
+	elif Input.is_action_pressed("move_right"):
+		$Sprite.flip_h = false
+		$CollisionStand.position.x = -2
+		$CollisionDuck.position.x = -2
+		$Sprite/SwordHit.scale.x = 1
+		motion.x += ACCEL
+		move_x()
+	elif Input.is_action_pressed("move_left"):
+		$Sprite.flip_h = true
+		$CollisionStand.position.x = 2
+		$CollisionDuck.position.x = 2
+		$Sprite/SwordHit.scale.x = -1
+		motion.x -= ACCEL
+		move_x()
+	#If neither is pressed and on the floor
+	elif is_on_floor():
+		#Slow down on the floor
+		motion.x = lerp(motion.x, 0, FRICTION)
+		move_x()
 
-func _on_GravityEnableDelay_timeout():
-	is_gravity_on = true
+func _physics_process(_delta):
+	get_input()
+	if health <= 0:
+		die()
+	#Establish gravity
+	motion.y += GRAVITY
+	if motion.y > MAXFALLSPEED:
+		motion.y = MAXFALLSPEED
+	
+	#Jump is pressed
+	if is_on_floor():
+		#Jump is pressed
+		if Input.is_action_pressed("move_jump"):
+			motion.y = -JUMPFORCE
+			jump()
+	else:
+		if motion.y > 0:
+			fall()
+
+	#Re-evaluate motion using updated values
+	motion = move_and_slide(motion,UP)
+	
+func hurt(var d:float = 0):
+	state_machine.travel("Hurt")
+	health -= d
+#	print("health: ", health)
+	
+func die():
+	state_machine.travel("Die")
+	lives -= 1
+	#print("lives: ", lives)
+	if lives > 0:
+		respawn()
+	else:
+		set_physics_process(false)
+
+func fall():
+	state_machine.travel("Fall")
+	
+func jump():
+	state_machine.travel("Jump")
+
+func attack():
+	#state_machine.travel(attacks[randi() % 2])
+	state_machine.travel("Attack3")
+
+func move_x():
+	if is_on_floor():
+		if Input.is_action_pressed("move_down"):
+			state_machine.travel("Duck")
+			speed = MAXSPEED / 2
+		elif Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right"):
+			state_machine.travel("Run")
+			speed = MAXSPEED
+		else:
+			state_machine.travel("Default")
+			speed = MAXSPEED
+	
+func respawn():
+	health = 100
+	position.x = 8
+	position.y = -2
+
+#Could possibly remove this (might not be needed in the future)
+func _on_SwordHit_area_entered(area):
+	if area.is_in_group("hurtbox"):
+		area.take_damage()
+
+func _on_SwordHit_body_entered(body):
+	#TODO: Change the 10 to a variable for player causing damage
+#	print(body)
+	if body.is_in_group("enemy"):
+		body.hurt(10)

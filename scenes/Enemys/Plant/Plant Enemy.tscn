@@ -17,7 +17,8 @@ shape = SubResource( 1 )
 [node name="ProjectileSpawn" type="Node2D" parent="."]
 position = Vector2( -8, -16 )
 
-[node name="DelayBetweenShots" type="Timer" parent="."]
+[node name="DelayBetweenShots" type="Timer" parent="." groups=["enemy"]]
+wait_time = 5.0
 autostart = true
 
 [node name="sprite" type="Sprite" parent="."]
