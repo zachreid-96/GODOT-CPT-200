@@ -11,6 +11,7 @@ func _ready():
 			break
 	get_node("Health_Bar").initialize(health_node.max_health)
 	get_node("Collectibles/Nuts_Counter").initialize()
+	get_node("Lives_Counter").initialize()
 		
 
 func _on_Health_health_changed(health):

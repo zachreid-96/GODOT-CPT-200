@@ -17,10 +17,8 @@ var facing_left = false
 var state_machine
 var attacks = ["Attack1","Attack2","Attack3"]
 
-var health = 100.0
-var lives = 5
-
 signal health_changed(health)
+signal life_Change(lives)
 
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
@@ -65,7 +63,7 @@ func get_input():
 
 func _physics_process(_delta):
 	get_input()
-	if health <= 0:
+	if PlayerVars.health <= 0:
 		die()
 	#Establish gravity
 	motion.y += GRAVITY
@@ -87,15 +85,15 @@ func _physics_process(_delta):
 	
 func hurt(var d:float = 0):
 	state_machine.travel("Hurt")
-	health -= d
-	emit_signal("health_changed", health)
+	PlayerVars.health -= d
+	emit_signal("health_changed", PlayerVars.health)
 #	print("health: ", health)
 	
 func die():
 	state_machine.travel("Die")
-	lives -= 1
+	PlayerVars.lives -= 1
 	#print("lives: ", lives)
-	if lives > 0:
+	if PlayerVars.lives > 0:
 		respawn()
 	else:
 		set_physics_process(false)
@@ -123,9 +121,12 @@ func move_x():
 			speed = MAXSPEED
 	
 func respawn():
-	health = 100
+	PlayerVars.health = 100
 	position.x = 8
 	position.y = -2
+	get_tree().reload_current_scene()
+	emit_signal("health_changed", PlayerVars.health)
+	emit_signal("life_Change")
 
 #Could possibly remove this (might not be needed in the future)
 func _on_SwordHit_area_entered(area):

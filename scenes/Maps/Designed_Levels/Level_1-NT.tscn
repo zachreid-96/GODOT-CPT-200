@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=97 format=2]
 
 [ext_resource path="res://assets/tiles/Pipe Assets.png" type="Texture" id=1]
 [ext_resource path="res://assets/tiles/autotile_directions.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/Enemys/Spikes/Spikes.tscn" type="PackedScene" id=7]
 [ext_resource path="res://interface/Interface.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Maps/Designed_Levels/Nuts.gd" type="Script" id=9]
+[ext_resource path="res://interface/lives/Lives_Counter.gd" type="Script" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -836,6 +837,9 @@ script = ExtResource( 9 )
 
 [node name="Interface" parent="Player2" instance=ExtResource( 8 )]
 
+[node name="Lives_Counter" parent="Player2/Interface" index="1"]
+script = ExtResource( 10 )
+
 [node name="Camera2D" type="Camera2D" parent="Player2"]
 position = Vector2( 1, -14 )
 current = true
@@ -856,8 +860,10 @@ position = Vector2( 45, -37 )
 position = Vector2( 86, -38 )
 
 [connection signal="health_changed" from="Player2" to="Player2/Interface/Health_Bar" method="_on_Player2_health_changed"]
+[connection signal="life_Change" from="Player2" to="Player2/Interface/Lives_Counter" method="_on_Player2_life_Change"]
 [connection signal="health_changed" from="Player2/Health" to="Player2/Interface" method="_on_Health_health_changed"]
 [connection signal="nuts_changed" from="Player2/Nuts" to="Player2/Interface" method="_on_Nuts_nuts_changed"]
+[connection signal="life_Change" from="Player2/Interface/Collectibles/Nuts_Counter" to="Player2/Interface/Lives_Counter" method="_on_Nuts_Counter_life_Change"]
 [connection signal="nuts_changed" from="Collectable" to="Player2/Interface/Collectibles/Nuts_Counter" method="_on_Collectable_nuts_changed"]
 [connection signal="nuts_changed" from="Collectable2" to="Player2/Interface/Collectibles/Nuts_Counter" method="_on_Collectable2_nuts_changed"]
 
