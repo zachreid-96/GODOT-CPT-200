@@ -19,6 +19,7 @@ var attacks = ["Attack1","Attack2","Attack3"]
 
 var health = 100.0
 var lives = 5
+var score = 0
 
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
@@ -123,6 +124,14 @@ func respawn():
 	health = 100
 	position.x = 8
 	position.y = -2
+
+func score(var s:int = 1):
+	score += s
+	if score >= 100:
+		lives += 1
+		score -= 100
+#		print("lives: ", lives)
+#	print("score: ", score)
 
 #Could possibly remove this (might not be needed in the future)
 func _on_SwordHit_area_entered(area):
