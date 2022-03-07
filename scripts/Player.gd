@@ -19,6 +19,7 @@ var attacks = ["Attack1","Attack2","Attack3"]
 
 signal health_changed(health)
 signal life_Change(lives)
+signal nuts_changed(nuts)
 
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
@@ -124,9 +125,13 @@ func respawn():
 	PlayerVars.health = 100
 	position.x = 8
 	position.y = -2
+	PlayerVars.nuts = 0
 	get_tree().reload_current_scene()
 	emit_signal("health_changed", PlayerVars.health)
 	emit_signal("life_Change")
+
+func collect(var n:int = 1):
+	emit_signal("nuts_changed", n)
 
 #Could possibly remove this (might not be needed in the future)
 func _on_SwordHit_area_entered(area):

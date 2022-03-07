@@ -1,8 +1,9 @@
 extends Area2D
 
-signal nuts_changed(nuts)
+var player:Player
 
 func _on_Collectable_body_entered(body: Node) -> void:
-	
-	emit_signal("nuts_changed", 1)
-	queue_free()
+	if body.get_class() == "Player":
+		player = body
+		player.collect(1)
+		queue_free()

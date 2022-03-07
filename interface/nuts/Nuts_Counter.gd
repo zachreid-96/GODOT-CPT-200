@@ -5,10 +5,7 @@ func initialize():
 
 signal life_Change(lives)
 
-func _on_Collectable_nuts_changed(nuts):
-	getNuts(nuts)
-
-func _on_Collectable2_nuts_changed(nuts):
+func _on_Player2_nuts_changed(nuts):
 	getNuts(nuts)
 
 func _on_Interface_nuts_updated(count):

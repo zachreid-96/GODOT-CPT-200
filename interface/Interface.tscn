@@ -29,8 +29,8 @@ margin_bottom = 18.0
 [node name="Lives_Counter" parent="." instance=ExtResource( 5 )]
 margin_left = 5.0
 margin_top = 21.0
-margin_right = 45.0
-margin_bottom = 41.0
+margin_right = 35.0
+margin_bottom = 36.0
 
 [node name="Collectibles" type="HBoxContainer" parent="."]
 anchor_left = 1.0
@@ -38,8 +38,8 @@ anchor_right = 1.0
 margin_left = -45.0
 margin_top = 6.0
 margin_right = -5.0
-margin_bottom = 26.0
-rect_min_size = Vector2( 40, 20 )
+margin_bottom = 21.0
+rect_min_size = Vector2( 40, 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

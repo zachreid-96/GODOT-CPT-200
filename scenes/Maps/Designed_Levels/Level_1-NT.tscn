@@ -861,11 +861,10 @@ position = Vector2( 86, -38 )
 
 [connection signal="health_changed" from="Player2" to="Player2/Interface/Health_Bar" method="_on_Player2_health_changed"]
 [connection signal="life_Change" from="Player2" to="Player2/Interface/Lives_Counter" method="_on_Player2_life_Change"]
+[connection signal="nuts_changed" from="Player2" to="Player2/Interface/Collectibles/Nuts_Counter" method="_on_Player2_nuts_changed"]
 [connection signal="health_changed" from="Player2/Health" to="Player2/Interface" method="_on_Health_health_changed"]
 [connection signal="nuts_changed" from="Player2/Nuts" to="Player2/Interface" method="_on_Nuts_nuts_changed"]
 [connection signal="life_Change" from="Player2/Interface/Collectibles/Nuts_Counter" to="Player2/Interface/Lives_Counter" method="_on_Nuts_Counter_life_Change"]
-[connection signal="nuts_changed" from="Collectable" to="Player2/Interface/Collectibles/Nuts_Counter" method="_on_Collectable_nuts_changed"]
-[connection signal="nuts_changed" from="Collectable2" to="Player2/Interface/Collectibles/Nuts_Counter" method="_on_Collectable2_nuts_changed"]
 
 [editable path="Player2"]
 [editable path="Player2/Interface"]
