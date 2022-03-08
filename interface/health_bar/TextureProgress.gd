@@ -1,4 +1,4 @@
 extends TextureProgress
 
-func _on_Health_Bar_maximum_changed(health):
-	self.value = health
+func _on_Health_Bar_maximum_changed():
+	self.value = PlayerVars.health

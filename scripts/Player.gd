@@ -87,7 +87,7 @@ func _physics_process(_delta):
 func hurt(var d:float = 0):
 	state_machine.travel("Hurt")
 	PlayerVars.health -= d
-	emit_signal("health_changed", PlayerVars.health)
+	emit_signal("health_changed")
 #	print("health: ", health)
 	
 func die():
@@ -130,8 +130,8 @@ func respawn():
 	emit_signal("health_changed", PlayerVars.health)
 	emit_signal("life_Change")
 
-func collect(var n:int = 1):
-	emit_signal("nuts_changed", n)
+func collect():
+	emit_signal("nuts_changed")
 
 #Could possibly remove this (might not be needed in the future)
 func _on_SwordHit_area_entered(area):

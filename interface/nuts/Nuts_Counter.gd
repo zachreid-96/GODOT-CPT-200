@@ -3,16 +3,16 @@ extends NinePatchRect
 func initialize():
 	pass
 
-signal life_Change(lives)
+signal life_Change()
 
-func _on_Player2_nuts_changed(nuts):
-	getNuts(nuts)
+func _on_Player2_nuts_changed():
+	getNuts()
 
-func _on_Interface_nuts_updated(count):
+func _on_Interface_nuts_updated():
 	pass # Replace with function body.
 
-func getNuts(nuts):
-	PlayerVars.nuts += nuts
+func getNuts():
+	PlayerVars.nuts += 1
 	if PlayerVars.nuts == 100:
 		PlayerVars.nuts = 0
 		$Label.text = str(PlayerVars.nuts)
