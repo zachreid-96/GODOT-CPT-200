@@ -133,14 +133,6 @@ func respawn():
 func collect():
 	emit_signal("nuts_changed")
 
-func score(var s:int = 1):
-	score += s
-	if score >= 100:
-		lives += 1
-		score -= 100
-#		print("lives: ", lives)
-#	print("score: ", score)
-
 #Could possibly remove this (might not be needed in the future)
 func _on_SwordHit_area_entered(area):
 	if area.is_in_group("hurtbox"):
