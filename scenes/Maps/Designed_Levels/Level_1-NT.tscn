@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://assets/tiles/Pipe Assets.png" type="Texture" id=1]
 [ext_resource path="res://assets/tiles/autotile_directions.png" type="Texture" id=2]
@@ -7,7 +7,10 @@
 [ext_resource path="res://scenes/Enemys/Plant/Plant Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Collectables/Collectable.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Enemys/Spikes/Spikes.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/Enemys/Slime/Slime.tscn" type="PackedScene" id=8]
+[ext_resource path="res://interface/Interface.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Enemys/Slime/Slime.tscn" type="PackedScene" id=9]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=87]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -833,12 +836,18 @@ points = PoolVector2Array( 16, 14, 0, 14, 0, 2, 16, 2 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player2" parent="." groups=["player"] instance=ExtResource( 4 )]
+[node name="Player2" parent="." groups=["Player"] instance=ExtResource( 4 )]
+z_index = 1
+
+[node name="AnimationTree" parent="Player2" index="4"]
+parameters/playback = SubResource( 87 )
 
 [node name="Camera2D" type="Camera2D" parent="Player2"]
 position = Vector2( 1, -14 )
 current = true
 zoom = Vector2( 0.3, 0.3 )
+
+[node name="Interface" parent="Player2" instance=ExtResource( 8 )]
 
 [node name="Spikes" parent="." instance=ExtResource( 7 )]
 position = Vector2( 120, 0 )
@@ -992,28 +1001,28 @@ rotation = 3.14159
 
 [node name="Slime" type="Node2D" parent="Obsticles"]
 
-[node name="Slime" parent="Obsticles/Slime" instance=ExtResource( 8 )]
+[node name="Slime" parent="Obsticles/Slime" instance=ExtResource( 9 )]
 position = Vector2( 1463, -120 )
 
-[node name="Slime2" parent="Obsticles/Slime" instance=ExtResource( 8 )]
+[node name="Slime2" parent="Obsticles/Slime" instance=ExtResource( 9 )]
 position = Vector2( 1464, -8 )
 
-[node name="Slime3" parent="Obsticles/Slime" instance=ExtResource( 8 )]
+[node name="Slime3" parent="Obsticles/Slime" instance=ExtResource( 9 )]
 position = Vector2( 1504, -8 )
 
-[node name="Slime4" parent="Obsticles/Slime" instance=ExtResource( 8 )]
+[node name="Slime4" parent="Obsticles/Slime" instance=ExtResource( 9 )]
 position = Vector2( 1544, -8 )
 
-[node name="Slime5" parent="Obsticles/Slime" instance=ExtResource( 8 )]
+[node name="Slime5" parent="Obsticles/Slime" instance=ExtResource( 9 )]
 position = Vector2( 1584, -8 )
 
-[node name="Slime6" parent="Obsticles/Slime" instance=ExtResource( 8 )]
+[node name="Slime6" parent="Obsticles/Slime" instance=ExtResource( 9 )]
 position = Vector2( 198, -248 )
 
-[node name="Slime7" parent="Obsticles/Slime" instance=ExtResource( 8 )]
+[node name="Slime7" parent="Obsticles/Slime" instance=ExtResource( 9 )]
 position = Vector2( 310, -248 )
 
-[node name="Slime8" parent="Obsticles/Slime" instance=ExtResource( 8 )]
+[node name="Slime8" parent="Obsticles/Slime" instance=ExtResource( 9 )]
 position = Vector2( 7, -152 )
 
 [node name="Plants" type="Node2D" parent="Obsticles"]
@@ -1021,7 +1030,7 @@ position = Vector2( 7, -152 )
 [node name="Plant Enemy6" parent="Obsticles/Plants" instance=ExtResource( 5 )]
 position = Vector2( 1608, -400 )
 
-[node name="Plant Enemy" parent="Obsticles/Plants" groups=["enemy"] instance=ExtResource( 5 )]
+[node name="Plant Enemy" parent="Obsticles/Plants" instance=ExtResource( 5 )]
 position = Vector2( 355, -160 )
 isFliped = true
 
@@ -1054,3 +1063,11 @@ tile_data = PoolIntArray( -1572777, 0, 196608, -1572776, 0, 196609, -1572775, 0,
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -80.0
+
+[connection signal="health_changed" from="Player2" to="Player2/Interface/Health_Bar" method="_on_Player2_health_changed"]
+[connection signal="life_Change" from="Player2" to="Player2/Interface/Lives_Counter" method="_on_Player2_life_Change"]
+[connection signal="nuts_changed" from="Player2" to="Player2/Interface/Collectibles/Nuts_Counter" method="_on_Player2_nuts_changed"]
+[connection signal="life_Change" from="Player2/Interface/Collectibles/Nuts_Counter" to="Player2/Interface/Lives_Counter" method="_on_Nuts_Counter_life_Change"]
+
+[editable path="Player2"]
+[editable path="Player2/Interface"]
