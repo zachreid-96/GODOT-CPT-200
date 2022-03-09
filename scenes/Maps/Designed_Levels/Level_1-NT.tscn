@@ -836,7 +836,7 @@ points = PoolVector2Array( 16, 14, 0, 14, 0, 2, 16, 2 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player2" parent="." groups=["player"] instance=ExtResource( 4 )]
+[node name="Player2" parent="." groups=["Player"] instance=ExtResource( 4 )]
 z_index = 1
 
 [node name="AnimationTree" parent="Player2" index="4"]
@@ -1030,7 +1030,7 @@ position = Vector2( 7, -152 )
 [node name="Plant Enemy6" parent="Obsticles/Plants" instance=ExtResource( 5 )]
 position = Vector2( 1608, -400 )
 
-[node name="Plant Enemy" parent="Obsticles/Plants" groups=["enemy"] instance=ExtResource( 5 )]
+[node name="Plant Enemy" parent="Obsticles/Plants" instance=ExtResource( 5 )]
 position = Vector2( 355, -160 )
 isFliped = true
 

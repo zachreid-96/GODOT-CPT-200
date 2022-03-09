@@ -141,5 +141,5 @@ func _on_SwordHit_area_entered(area):
 func _on_SwordHit_body_entered(body):
 	#TODO: Change the 10 to a variable for player causing damage
 #	print(body)
-	if body.is_in_group("enemy"):
+	if body.is_in_group("Enemy"):
 		body.hurt(10)
