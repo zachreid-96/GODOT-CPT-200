@@ -11,7 +11,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 3 )]
-position = Vector2( 1616, 1512 )
+position = Vector2( 1072, 1512 )
 z_index = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -23,134 +23,134 @@ zoom = Vector2( 0.3, 0.3 )
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -152.0
-margin_top = -94.0
+margin_top = -88.0
 margin_right = 158.0
-margin_bottom = 86.0
+margin_bottom = 92.0
 
-[node name="Obsticles" type="Node2D" parent="."]
+[node name="Obstacles" type="Node2D" parent="."]
 
-[node name="Spikes" type="Node2D" parent="Obsticles"]
+[node name="Spikes" type="Node2D" parent="Obstacles"]
 
-[node name="FallRoom" type="Node2D" parent="Obsticles/Spikes"]
+[node name="FallRoom" type="Node2D" parent="Obstacles/Spikes"]
 
-[node name="Spikes3" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes3" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( 72, 1024 )
 
-[node name="Spikes" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( 104, 1024 )
 
-[node name="Spikes2" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes2" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( 88, 1024 )
 
-[node name="Spikes4" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes4" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( 56, 1024 )
 
-[node name="Spikes5" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes5" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( 40, 1024 )
 
-[node name="Spikes6" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes6" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( 8, 1152 )
 
-[node name="Spikes7" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes7" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( -8, 1152 )
 
-[node name="Spikes8" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes8" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( -24, 1168 )
 
-[node name="Spikes9" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes9" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( -40, 1168 )
 
-[node name="Spikes10" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes10" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( 24, 1168 )
 
-[node name="Spikes11" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes11" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( 40, 1168 )
 
-[node name="Spikes12" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes12" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( -120, 1296 )
 
-[node name="Spikes13" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes13" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( -104, 1296 )
 
-[node name="Spikes15" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes15" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( -72, 1312 )
 
-[node name="Spikes16" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes16" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( -56, 1312 )
 
-[node name="Spikes17" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes17" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( 56, 1312 )
 
-[node name="Spikes18" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes18" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( 40, 1312 )
 
-[node name="Spikes19" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes19" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( 104, 1296 )
 
-[node name="Spikes20" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes20" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( 88, 1296 )
 
-[node name="Spikes21" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes21" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( 72, 1296 )
 
-[node name="Spikes14" parent="Obsticles/Spikes/FallRoom" instance=ExtResource( 4 )]
+[node name="Spikes14" parent="Obstacles/Spikes/FallRoom" instance=ExtResource( 4 )]
 position = Vector2( -88, 1296 )
 
-[node name="Hallway" type="Node2D" parent="Obsticles/Spikes"]
+[node name="Hallway" type="Node2D" parent="Obstacles/Spikes"]
 
-[node name="Spikes27" parent="Obsticles/Spikes/Hallway" instance=ExtResource( 4 )]
+[node name="Spikes27" parent="Obstacles/Spikes/Hallway" instance=ExtResource( 4 )]
 position = Vector2( 1144, 1584 )
 
-[node name="Spikes26" parent="Obsticles/Spikes/Hallway" instance=ExtResource( 4 )]
+[node name="Spikes26" parent="Obstacles/Spikes/Hallway" instance=ExtResource( 4 )]
 position = Vector2( 1128, 1584 )
 
-[node name="Spikes25" parent="Obsticles/Spikes/Hallway" instance=ExtResource( 4 )]
+[node name="Spikes25" parent="Obstacles/Spikes/Hallway" instance=ExtResource( 4 )]
 position = Vector2( 1112, 1584 )
 
-[node name="Spikes24" parent="Obsticles/Spikes/Hallway" instance=ExtResource( 4 )]
+[node name="Spikes24" parent="Obstacles/Spikes/Hallway" instance=ExtResource( 4 )]
 position = Vector2( 728, 1536 )
 
-[node name="Spikes23" parent="Obsticles/Spikes/Hallway" instance=ExtResource( 4 )]
+[node name="Spikes23" parent="Obstacles/Spikes/Hallway" instance=ExtResource( 4 )]
 position = Vector2( 712, 1536 )
 
-[node name="Spikes22" parent="Obsticles/Spikes/Hallway" instance=ExtResource( 4 )]
+[node name="Spikes22" parent="Obstacles/Spikes/Hallway" instance=ExtResource( 4 )]
 position = Vector2( 696, 1536 )
 
-[node name="Enemies" type="Node2D" parent="Obsticles"]
+[node name="Enemies" type="Node2D" parent="Obstacles"]
 
-[node name="Plant Enemy" parent="Obsticles/Enemies" instance=ExtResource( 5 )]
+[node name="Plant Enemy" parent="Obstacles/Enemies" instance=ExtResource( 5 )]
 position = Vector2( -144, 320 )
 isFliped = true
 
-[node name="Plant Enemy2" parent="Obsticles/Enemies" instance=ExtResource( 5 )]
+[node name="Plant Enemy2" parent="Obstacles/Enemies" instance=ExtResource( 5 )]
 position = Vector2( 128, 320 )
 
-[node name="Plant Enemy3" parent="Obsticles/Enemies" instance=ExtResource( 5 )]
+[node name="Plant Enemy3" parent="Obstacles/Enemies" instance=ExtResource( 5 )]
 position = Vector2( 96, 640 )
 
-[node name="Plant Enemy4" parent="Obsticles/Enemies" instance=ExtResource( 5 )]
+[node name="Plant Enemy4" parent="Obstacles/Enemies" instance=ExtResource( 5 )]
 position = Vector2( -112, 640 )
 isFliped = true
 
-[node name="Plant Enemy5" parent="Obsticles/Enemies" instance=ExtResource( 5 )]
+[node name="Plant Enemy5" parent="Obstacles/Enemies" instance=ExtResource( 5 )]
 position = Vector2( -80, 816 )
 isFliped = true
 
-[node name="Plant Enemy7" parent="Obsticles/Enemies" instance=ExtResource( 5 )]
+[node name="Plant Enemy7" parent="Obstacles/Enemies" instance=ExtResource( 5 )]
 position = Vector2( 344, 1520 )
 
-[node name="Plant Enemy6" parent="Obsticles/Enemies" instance=ExtResource( 5 )]
+[node name="Plant Enemy6" parent="Obstacles/Enemies" instance=ExtResource( 5 )]
 position = Vector2( 488, 1520 )
 
-[node name="Plant Enemy8" parent="Obsticles/Enemies" instance=ExtResource( 5 )]
+[node name="Plant Enemy8" parent="Obstacles/Enemies" instance=ExtResource( 5 )]
 position = Vector2( 1232, 1520 )
 
-[node name="Slime" type="Node2D" parent="Obsticles"]
+[node name="Slime" type="Node2D" parent="Obstacles"]
 
-[node name="Slime2" parent="Obsticles/Slime" instance=ExtResource( 6 )]
+[node name="Slime2" parent="Obstacles/Slime" instance=ExtResource( 6 )]
 position = Vector2( 423, 1544 )
 
-[node name="Slime" parent="Obsticles/Slime" instance=ExtResource( 6 )]
+[node name="Slime" parent="Obstacles/Slime" instance=ExtResource( 6 )]
 position = Vector2( 279, 1543 )
 
 [node name="TileMap" parent="." instance=ExtResource( 2 )]
