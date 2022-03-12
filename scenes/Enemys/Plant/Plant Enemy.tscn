@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/Plant Enemy.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 13.5 )
+extents = Vector2( 14, 13.5 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -135,14 +135,14 @@ start_node = "idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=14]
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 24, 13.5 )
+extents = Vector2( 23, 13.5 )
 
 [node name="Plant Enemy" type="KinematicBody2D" groups=["Enemy"]]
 script = ExtResource( 2 )
 projectileForceX = -200
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -13.5 )
+position = Vector2( 2, -13.5 )
 shape = SubResource( 1 )
 
 [node name="ProjectileSpawn" type="Node2D" parent="."]
@@ -180,7 +180,7 @@ parameters/conditions/spit = false
 [node name="PlayerBiteArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBiteArea"]
-position = Vector2( -16, -13.5 )
+position = Vector2( -15, -13.5 )
 shape = SubResource( 15 )
 
 [connection signal="timeout" from="DelayBetweenShots" to="." method="_on_DelayBetweenShots_timeout"]
