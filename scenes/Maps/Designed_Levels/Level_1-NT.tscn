@@ -836,18 +836,18 @@ points = PoolVector2Array( 16, 14, 0, 14, 0, 2, 16, 2 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player2" parent="." groups=["Player"] instance=ExtResource( 4 )]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource( 4 )]
 z_index = 1
 
-[node name="AnimationTree" parent="Player2" index="4"]
+[node name="AnimationTree" parent="Player" index="4"]
 parameters/playback = SubResource( 87 )
 
-[node name="Camera2D" type="Camera2D" parent="Player2"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 1, -14 )
 current = true
 zoom = Vector2( 0.3, 0.3 )
 
-[node name="Interface" parent="Player2" instance=ExtResource( 8 )]
+[node name="Interface" parent="Player" instance=ExtResource( 8 )]
 
 [node name="Spikes" parent="." instance=ExtResource( 7 )]
 position = Vector2( 120, 0 )
@@ -1063,10 +1063,10 @@ tile_data = PoolIntArray( -1572777, 0, 196608, -1572776, 0, 196609, -1572775, 0,
 stream = ExtResource( 3 )
 volume_db = -80.0
 
-[connection signal="health_changed" from="Player2" to="Player2/Interface/Health_Bar" method="_on_Player2_health_changed"]
-[connection signal="life_Change" from="Player2" to="Player2/Interface/Lives_Counter" method="_on_Player2_life_Change"]
-[connection signal="nuts_changed" from="Player2" to="Player2/Interface/Collectibles/Nuts_Counter" method="_on_Player2_nuts_changed"]
-[connection signal="life_Change" from="Player2/Interface/Collectibles/Nuts_Counter" to="Player2/Interface/Lives_Counter" method="_on_Nuts_Counter_life_Change"]
+[connection signal="health_changed" from="Player" to="Player/Interface/Health_Bar" method="_on_Player2_health_changed"]
+[connection signal="life_Change" from="Player" to="Player/Interface/Lives_Counter" method="_on_Player2_life_Change"]
+[connection signal="nuts_changed" from="Player" to="Player/Interface/Collectibles/Nuts_Counter" method="_on_Player2_nuts_changed"]
+[connection signal="life_Change" from="Player/Interface/Collectibles/Nuts_Counter" to="Player/Interface/Lives_Counter" method="_on_Nuts_Counter_life_Change"]
 
-[editable path="Player2"]
-[editable path="Player2/Interface"]
+[editable path="Player"]
+[editable path="Player/Interface"]
