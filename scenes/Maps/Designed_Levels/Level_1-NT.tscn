@@ -833,9 +833,9 @@ points = PoolVector2Array( 16, 14, 0, 14, 0, 2, 16, 2 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player2" parent="." groups=["player"] instance=ExtResource( 4 )]
+[node name="Player" parent="." groups=["player"] instance=ExtResource( 4 )]
 
-[node name="Camera2D" type="Camera2D" parent="Player2"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 1, -14 )
 current = true
 zoom = Vector2( 0.3, 0.3 )
