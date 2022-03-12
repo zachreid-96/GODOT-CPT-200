@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot- Cpt- 200"
-run/main_scene="res://scenes/Maps/Designed_Levels/Level_1-NT.tscn"
+run/main_scene="res://scenes/Maps/Designed_Levels/Level_2-NT.tscn"
 config/icon="res://icon.png"
 
 [autoload]

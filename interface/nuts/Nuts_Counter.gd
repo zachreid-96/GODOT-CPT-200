@@ -5,7 +5,7 @@ func initialize():
 
 signal life_Change()
 
-func _on_Player2_nuts_changed():
+func _on_Player_nuts_changed():
 	getNuts()
 
 func _on_Interface_nuts_updated():
