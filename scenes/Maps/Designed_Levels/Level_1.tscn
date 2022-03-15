@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://assets/tiles/Pipe Assets.png" type="Texture" id=1]
 [ext_resource path="res://assets/tiles/autotile_directions.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/Enemys/Spikes/Spikes.tscn" type="PackedScene" id=7]
 [ext_resource path="res://interface/Interface.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Enemys/Slime/Slime.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scripts/LevelTransition.gd" type="Script" id=10]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=87]
 
@@ -834,6 +835,9 @@ points = PoolVector2Array( 16, 14, 0, 14, 0, 2, 16, 2 )
 0/shapes = [  ]
 0/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=88]
+extents = Vector2( 139, 10 )
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 4 )]
@@ -1063,10 +1067,22 @@ tile_data = PoolIntArray( -1572777, 0, 196608, -1572776, 0, 196609, -1572775, 0,
 stream = ExtResource( 3 )
 volume_db = -80.0
 
+[node name="LevelTransition" type="Area2D" parent="."]
+position = Vector2( 2164, 473 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
+position = Vector2( 20, 0 )
+shape = SubResource( 88 )
+
 [connection signal="health_changed" from="Player" to="Player/Interface/Health_Bar" method="_on_Player_health_changed"]
 [connection signal="life_Change" from="Player" to="Player/Interface/Lives_Counter" method="_on_Player_life_Change"]
 [connection signal="nuts_changed" from="Player" to="Player/Interface/Collectibles/Nuts_Counter" method="_on_Player_nuts_changed"]
 [connection signal="life_Change" from="Player/Interface/Collectibles/Nuts_Counter" to="Player/Interface/Lives_Counter" method="_on_Nuts_Counter_life_Change"]
+[connection signal="body_entered" from="LevelTransition" to="LevelTransition" method="_on_LevelTransition_body_entered"]
 
 [editable path="Player"]
 [editable path="Player/Interface"]
