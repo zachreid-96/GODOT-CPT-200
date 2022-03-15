@@ -849,9 +849,6 @@ zoom = Vector2( 0.3, 0.3 )
 
 [node name="Interface" parent="Player" instance=ExtResource( 8 )]
 
-[node name="Spikes" parent="." instance=ExtResource( 7 )]
-position = Vector2( 120, 0 )
-
 [node name="Collectables" type="Node2D" parent="."]
 
 [node name="Collectable12" parent="Collectables" instance=ExtResource( 6 )]
@@ -999,6 +996,9 @@ rotation = 3.14159
 position = Vector2( 1352, -128 )
 rotation = 3.14159
 
+[node name="Spikes7" parent="Obstacles/Spikes" instance=ExtResource( 7 )]
+position = Vector2( 120, 0 )
+
 [node name="Slime" type="Node2D" parent="Obstacles"]
 
 [node name="Slime" parent="Obstacles/Slime" instance=ExtResource( 9 )]
@@ -1063,9 +1063,9 @@ tile_data = PoolIntArray( -1572777, 0, 196608, -1572776, 0, 196609, -1572775, 0,
 stream = ExtResource( 3 )
 volume_db = -80.0
 
-[connection signal="health_changed" from="Player" to="Player/Interface/Health_Bar" method="_on_Player2_health_changed"]
-[connection signal="life_Change" from="Player" to="Player/Interface/Lives_Counter" method="_on_Player2_life_Change"]
-[connection signal="nuts_changed" from="Player" to="Player/Interface/Collectibles/Nuts_Counter" method="_on_Player2_nuts_changed"]
+[connection signal="health_changed" from="Player" to="Player/Interface/Health_Bar" method="_on_Player_health_changed"]
+[connection signal="life_Change" from="Player" to="Player/Interface/Lives_Counter" method="_on_Player_life_Change"]
+[connection signal="nuts_changed" from="Player" to="Player/Interface/Collectibles/Nuts_Counter" method="_on_Player_nuts_changed"]
 [connection signal="life_Change" from="Player/Interface/Collectibles/Nuts_Counter" to="Player/Interface/Lives_Counter" method="_on_Nuts_Counter_life_Change"]
 
 [editable path="Player"]

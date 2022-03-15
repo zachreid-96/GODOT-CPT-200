@@ -7,3 +7,9 @@ func _on_Collectable_body_entered(body: Node) -> void:
 		player = body
 		player.collect()
 		queue_free()
+
+
+func _on_Collectable_area_entered(body: Node) -> void:
+	if body.get_class() == "Player":
+		player = body
+	pass
