@@ -15,7 +15,6 @@ var motion = Vector2()
 
 var facing_left = false
 var state_machine
-var attacks = ["Attack1","Attack2","Attack3"]
 
 signal health_changed(health)
 signal life_Change(lives)
@@ -23,10 +22,12 @@ signal nuts_changed(nuts)
 
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
+	emit_signal("health_changed")
+	emit_signal("life_Change")
+	emit_signal("nuts_changed")
 	
-func get_input():
-	#var current = state_machine.get_current_node()
 	
+func get_input():	
 	#Set limits for x-motion
 	motion.x = clamp(motion.x, -speed, speed)
 	
@@ -87,8 +88,10 @@ func _physics_process(_delta):
 func hurt(var d:float = 0):
 	state_machine.travel("Hurt")
 	PlayerVars.health -= d
+	if PlayerVars.health <= 0 :
+		die()
 	emit_signal("health_changed")
-#	print("health: ", health)
+#	
 	
 func die():
 	state_machine.travel("Die")
@@ -106,7 +109,6 @@ func jump():
 	state_machine.travel("Jump")
 
 func attack():
-	#state_machine.travel(attacks[randi() % 2])
 	state_machine.travel("Attack3")
 
 func move_x():
@@ -125,21 +127,18 @@ func respawn():
 	PlayerVars.health = 100
 	position.x = 8
 	position.y = -2
-	PlayerVars.nuts = 0
-	get_tree().reload_current_scene()
-	emit_signal("health_changed", PlayerVars.health)
+	emit_signal("health_changed")
 	emit_signal("life_Change")
-
-func collect():
 	emit_signal("nuts_changed")
 
-#Could possibly remove this (might not be needed in the future)
-func _on_SwordHit_area_entered(area):
-	if area.is_in_group("hurtbox"):
-		area.take_damage()
+func collect():
+	PlayerVars.nuts += 1
+	emit_signal("nuts_changed")
 
 func _on_SwordHit_body_entered(body):
-	#TODO: Change the 10 to a variable for player causing damage
-#	print(body)
 	if body.is_in_group("Enemy"):
 		body.hurt(10)
+		
+func _on_SwordHit_area_entered(body):
+	if body.is_in_group("Enemy"):
+		pass

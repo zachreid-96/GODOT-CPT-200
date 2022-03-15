@@ -12,9 +12,8 @@ func _on_Interface_nuts_updated():
 	pass # Replace with function body.
 
 func getNuts():
-	PlayerVars.nuts += 1
-	if PlayerVars.nuts == 100:
-		PlayerVars.nuts = 0
+	if PlayerVars.nuts >= 100:
+		PlayerVars.nuts -= 100
 		$Label.text = str(PlayerVars.nuts)
 		PlayerVars.lives += 1
 		emit_signal("life_Change", PlayerVars.lives)
